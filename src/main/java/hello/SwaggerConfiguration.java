@@ -27,15 +27,16 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfiguration {
 
 
-    public static final String DEFAULT_INCLUDE_PATTERN = "/api/.*";
+    public static final String DEFAULT_INCLUDE_PATTERN = "/.*";
 
     @Bean
     public Docket newsApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("greetings")
                 .apiInfo(apiInfo())
+                .forCodeGeneration(true)
+                .genericModelSubstitutes(ResponseEntity.class)
                 .select()
-                .paths(regex("/greeting.*"))
+                .paths(regex("/api/.*"))
                 .build();
     }
      
