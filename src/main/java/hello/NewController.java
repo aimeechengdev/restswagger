@@ -1,3 +1,4 @@
+
 package hello;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -18,18 +19,20 @@ import io.swagger.annotations.ResponseHeader;
  
 @RestController
 @RequestMapping("/api")
-public class GreetingController {
+public class NewController {
  
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
+ 
 
-    @RequestMapping(method = RequestMethod.GET, path="/greeting")
+    @RequestMapping(method = RequestMethod.GET, path="/new")
     public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
         return new Greeting(counter.incrementAndGet(),
                 String.format(template, name));
     }
     
-    @RequestMapping(method = RequestMethod.POST, path="/greeting")
+    
+    @RequestMapping(method = RequestMethod.POST, path="/new")
     public Greeting postgreeting(@RequestBody Greeting userDTO) {
         return new Greeting(counter.incrementAndGet(),
                 String.format(template, "postname"));
